@@ -1,0 +1,32 @@
+POST http://localhost:8000/invoices
+content-type: application/json
+
+{
+    "email": "okbruh5000@gmail.com",
+    "priority": "medium",
+    "status": "pending"
+}
+
+###
+POST http://localhost:8000/login
+content-type: application/json
+
+{
+    "email": "okbruh5000@gmail.com",
+    "password": "wkwkwkwk"
+}
+
+###
+GET http://localhost:8000/invoices
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im9rYnJ1aDUwMDBAZ21haWwuY29tIiwiaWF0IjoxNzA3OTA3NzQ3fQ.P4izCaytkR_L_hJsHqo9RM-auuStGiqyhEUufF1zDV0
+
+###
+PUT http://localhost:8000/invoices/AFX25Z8ZJK05NNOF
+Content-Type: application/json
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im9rYnJ1aDUwMDBAZ21haWwuY29tIiwiaWF0IjoxNzA3OTE0MDY5LCJleHAiOjE3MDc5MTQwNzl9.o2RFW004ocMCjZDvZD4cI8SfgVda5G2YTqCxX7lLG3A
+
+{
+    "imageTitle": "idkfa124.png",
+    "priority": "high",
+    "status": "cancel"
+}
