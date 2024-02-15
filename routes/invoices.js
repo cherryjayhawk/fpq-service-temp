@@ -20,14 +20,21 @@ router.get('/', (req, res) => {
 });
 
 router.post('/', (req, res) => {
-    const { email, status, priority } = req.body
+    const { fullname, email, note, status, priority, items, total } = req.body
     const id = randomize('A0', 16)
+    const date = new Date()
 
 	try {
-		db.run(`INSERT INTO invoices(id, email, status, priority) VALUES (?,?,?,?)`,
-            [ id, email, status, priority ], (err) => {
-                if (err) return res.status(500).json({ success: false, error: err })
-		})
+        db.serialize(() => {
+            db.run(`INSERT INTO invoices VALUES (?,?,?,?,?,?,?,?)`,
+                [ id, fullname, email, note, status, priority, date.toISOString(), date.toISOString() ], (err) => {
+                    if (err) return res.status(500).json({ success: false, error: err })
+            })
+            db.run(`INSERT INTO items VALUES (?,?,?,?,?,?,?,?,?)`,
+                [ items.QB_quantity, items.QB_price, items.QB_amount, items.QK_quantity, items.QK_price, items.QK_amount, items.GN_amount, total, id ], (err) => {
+                    if (err) return res.status(500).json({ success: false, error: err })
+            })
+        })
 		return res.status(200).json({ success: true })
 	} catch (err) {
         console.error(err);

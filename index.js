@@ -11,7 +11,7 @@ const app = express();
 db.serialize(() => {
     db.run("CREATE TABLE IF NOT EXISTS users(id INTEGER PRIMARY KEY, username VARCHAR(255), email VARCHAR(225), password VARCHAR(225), role VARCHAR(225), created_at VARCHAR(225))");
     db.run("CREATE TABLE IF NOT EXISTS invoices(id VARCHAR(225) PRIMARY KEY, fullname VARCHAR(225), email VARCHAR(225), note TEXT, status VARCHAR(225), priority VARCHAR(225), created_at VARCHAR(225), updated_at VARCHAR(225))");
-    db.run("CREATE TABLE IF NOT EXISTS items(id VARCHAR(225) PRIMARY KEY, QB_quantity INTEGER, QB_price INTEGER, QB_amount INTEGER, QK_quantity INTEGER, QK_price INTEGER, QK_amount INTEGER, GN_amount INTEGER, total INTEGER, invoice_id VARCHAR(225), FOREIGN KEY (invoice_id) REFERENCES invoices(id))");
+    db.run("CREATE TABLE IF NOT EXISTS items(id INTEGER PRIMARY KEY, QB_quantity INTEGER, QB_price INTEGER, QB_amount INTEGER, QK_quantity INTEGER, QK_price INTEGER, QK_amount INTEGER, GN_amount INTEGER, total INTEGER, invoice_id VARCHAR(225), FOREIGN KEY (invoice_id) REFERENCES invoices(id))");
     db.run("CREATE TABLE IF NOT EXISTS images(id INTEGER PRIMARY KEY, title VARCHAR(225), invoice_id VARCHAR(225), invoice_status VARCHAR(225), FOREIGN KEY (invoice_id) REFERENCES invoices(id), FOREIGN KEY (invoice_status) REFERENCES invoices(status))");
 });
 

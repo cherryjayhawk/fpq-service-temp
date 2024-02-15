@@ -2,6 +2,8 @@ POST http://localhost:8000/invoices
 content-type: application/json
 
 {
+    "fullname": "cherryjayhawk",
+    "note": "bruh",
     "email": "okbruh5000@gmail.com",
     "priority": "medium",
     "status": "pending"
@@ -17,8 +19,18 @@ content-type: application/json
 }
 
 ###
+POST http://localhost:8000/register
+content-type: application/json
+
+{
+    "username": "cherryjayhawk",
+    "email": "okbruh5000@gmail.com",
+    "password": "wkwkwkwk"
+}
+
+###
 GET http://localhost:8000/invoices
-Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im9rYnJ1aDUwMDBAZ21haWwuY29tIiwiaWF0IjoxNzA3OTA3NzQ3fQ.P4izCaytkR_L_hJsHqo9RM-auuStGiqyhEUufF1zDV0
+authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im9rYnJ1aDUwMDBAZ21haWwuY29tIiwiaWF0IjoxNzA3OTg5ODcxLCJleHAiOjE3MDc5OTcwNzF9.iJYekEN_qTMJgxO13dmnx3XZcjIlLvPZglkdieBxPzk
 
 ###
 PUT http://localhost:8000/invoices/AFX25Z8ZJK05NNOF
